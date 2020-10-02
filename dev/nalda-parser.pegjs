@@ -117,9 +117,10 @@ const fromNoteToAlda = function(noteData, externalModifiers = {}) {
   const modifiers = noteData.modifiers;
   code += "a" + "+".repeat(note);
   const longitude = modifiers.longitude ? modifiers.longitude : externalModifiers.longitude ? externalModifiers.longitude : false;
+  const timing = modifiers.timing ? modifiers.timing : externalModifiers.timing ? externalModifiers.timing : false;
   const quantification = modifiers.quantification ? modifiers.quantification : externalModifiers.quantification ? externalModifiers.quantification : false;
   const volume = modifiers.volume ? modifiers.volume : externalModifiers.volume ? externalModifiers.volume : false;
-  code = addModifiers({longitude, quantification, volume}, code);
+  code = addModifiers({longitude, timing, quantification, volume}, code);
   return code;
 };
 
@@ -128,8 +129,9 @@ const fromSilenceToAlda = function(silenceData) {
   const modifiers = silenceData.modifiers;
   code += "r";
   const longitude = modifiers.longitude ? modifiers.longitude : false;
+  const timing = modifiers.timing ? modifiers.timing : false;
   const quantification = modifiers.quantification ? modifiers.quantification : false;
-  code = addModifiers({longitude, quantification}, code);
+  code = addModifiers({longitude, timing, quantification}, code);
   return code;
 };
 
@@ -139,11 +141,15 @@ const fromTempoToAlda = function(tempoData) {
 }
 
 const addModifiers = function(modifiers, code = "") {
-  const {longitude = false, quantification = false, volume = false, tempo = false} = modifiers;
+  const {timing = false, longitude = false, quantification = false, volume = false, tempo = false} = modifiers;
+
   if(longitude !== false) {
   	code += longitude;
   } else {
   	code += "4";
+  }
+  if(timing !== false) {
+    code += "~" + timing + "ms";
   }
   if(quantification !== false) {
   	code = "(quant " + quantification + ") " + code;
@@ -204,10 +210,11 @@ Octava = _* "octave:" octave:Numero {return {type: "octave", octave}}
 Nota = _* "+"? note:Numero modifiers:Modificadores_de_nota? {return {type: "note", note, modifiers: modifiers ? modifiers : {}}}
 Modificadores_de_nota = 
   _* longitude:Modificador_de_longitud_de_nota?
+  _* timing:Modificador_de_tiempo_de_nota?
   _* duration:Modificador_de_duracion_de_nota?
   _* quantification:Modificador_de_cuantificacion_de_nota?
   _* volume:Modificador_de_volumen_de_nota?
-  {return Object.assign({}, longitude, duration, quantification, volume)}
+  {return Object.assign({}, longitude, timing, duration, quantification, volume)}
 Acorde = _* "{" _* notes:Nota+ _* "}" _* modifiers:Modificadores_de_nota? {return {type: "chord", notes, modifiers: modifiers ? modifiers : {}}}
 Tempo_global = _* "tempo:" _* tempo:Numero "!" {return {type: "global tempo", tempo}}
 Tempo_local = _* "tempo:" _* tempo:Numero {return {type: "local tempo", tempo}}
@@ -218,19 +225,22 @@ Momento = Definicion_de_momento / Uso_de_momento
 Definicion_de_momento = _* "@" moment:Palabra_amplia "!" {return {type: "moment definition", moment}}
 Uso_de_momento = _* "@" moment:Palabra_amplia ":" {return {type: "moment usage", moment}}
 Modificador_de_longitud_de_nota = _* longitude:Numero Identificador_de_longitud_de_nota {return {longitude}}
+Modificador_de_tiempo_de_nota = _* timing:Numero_con_decimales magnitude:Identificador_de_tiempo_de_nota {return {timing: magnitude === "seconds" ? (timing * 1000) : timing}}
 Modificador_de_duracion_de_nota = _* duration:Numero Identificador_de_duracion_de_nota {return {duration}}
 Modificador_de_cuantificacion_de_nota = _* quantification:Numero Identificador_de_cuantificacion_de_nota {return {quantification}}
 Modificador_de_volumen_de_nota = _* volume:Numero Identificador_de_volumen_de_nota {return {volume}}
 Numero = [0-9]+ {return parseInt(text())}
+Numero_con_decimales = [0-9]+ ("." [0-9]+)? {return parseInt(text())}
 _ = [\n\r\t ]
 Palabra = [A-Za-z]+ {return text()}
 Palabra_amplia = [A-Za-z0-9\-]+ {return text()}
 Identificador_de_longitud_de_nota = ("L"/"l"/"longitude"/"length") {}
+Identificador_de_tiempo_de_nota = ("MS"/"ms"/"milliseconds"/"S"/"s"/"seconds") {return (text().toLowerCase().indexOf("m") !== -1) ? "milliseconds" : "seconds"}
 Identificador_de_duracion_de_nota = ("D"/"d"/"duration") {}
 Identificador_de_cuantificacion_de_nota = ("Q"/"q"/"quantification") {}
 Identificador_de_volumen_de_nota = ("V"/"v"/"volume") {}
 Identificador_de_escala_arriba = ("scaleup" / "up") {}
 Identificador_de_escala_abajo = ("scaledown" / "down") {}
-Silencio = "." modifiers:Modificadores_de_nota {return {type: "silence", modifiers: modifiers ? modifiers : {}}}
-Inyeccion_de_codigo_alda = "[[" code:Codigo_alda "]]" {return {type: "alda injection", code}}
+Silencio = _* "." modifiers:Modificadores_de_nota {return {type: "silence", modifiers: modifiers ? modifiers : {}}}
+Inyeccion_de_codigo_alda = _* "[[" code:Codigo_alda "]]" {return {type: "alda injection", code}}
 Codigo_alda = (!("]]").)+ {return text()}

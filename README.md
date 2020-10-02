@@ -275,6 +275,11 @@ Notes accept modifiers:
     - Its syntax is: `4L` `8L` `16L` `32L` 
     - `4L` is the default (represents a black note, while `2L` represents a white note)
     - This magnitude represents the tempo divider, so, the higher this number is, the faster the note expires.
+  - `timing`:
+    - Represents the duration of a note, but directly into `seconds` or `milliseconds`.
+    - Its syntax is: `2500MS` (2.5 seconds) `4S` (4 seconds) `1S` (1 second) and so on... 
+    - There is no default value
+    - This magnitude represents the longitude of a note, but directly into `seconds` or `milliseconds`
   - `quantification`:
     - Represents the length of a note without changing its duration
     - Its syntax is: `0D` `20D` `40D` `60D` `80D` `100D` 
