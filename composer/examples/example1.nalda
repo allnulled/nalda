@@ -1,0 +1,87 @@
+</
+
+const MODE = 0;
+const chord1 = nalda.Chord.create({ notes: [0,7,12,15,19,24] }); // mi
+const chord2 = nalda.Chord.create({ notes: [3,7,10,15,22,27] }); // sol
+const chord3 = nalda.Chord.create({ notes: [0,5,10,17,22,26] }); // re
+const chordLength = 16;
+const silenceLength = 4;
+const interchordLength = 32;
+
+if(MODE === 1) {
+
+/>
+
+/* hello */
+
+piano:
+voice 1:
+  octave:2
+
+  </-chord1/> </-chordLength/>L </-chord1/> </-chordLength/>L . </-silenceLength/>L
+  </-chord1/> </-chordLength/>L </-chord1/> </-chordLength/>L . </-silenceLength/>L
+
+  </-chord2/> </-chordLength/>L </-chord2/> </-chordLength/>L . </-silenceLength/>L
+  </-chord2/> </-chordLength/>L </-chord2/> </-chordLength/>L . </-silenceLength/>L
+
+  </-chord3/> </-chordLength/>L </-chord3/> </-chordLength/>L . </-silenceLength/>L
+  </-chord3/> </-chordLength/>L </-chord3/> </-chordLength/>L . </-silenceLength/>L
+
+  </-chord1/> </-chordLength/>L
+
+</ } else if (MODE === 0) { />
+
+
+piano:
+  tempo: 180!
+  
+  @intro!
+
+  </ for(let index=0; index < 2; index++) { />
+
+  </-chord1/> 4L . 8L
+  </-chord1/> 4L . 8L
+  . 6L
+  </-chord1/> 4L . 8L
+  </-chord1/> 4L . 8L
+  . 6L
+  </-chord1/> 4L . 8L
+  </-chord1/> 4L . 8L
+  . 6L
+  </-chord1/> 4L . 8L
+  </-chord1/> 4L . 8L
+  . 6L
+  </-chord2/> 4L . 8L
+  </-chord2/> 4L . 8L
+  . 6L
+  </-chord2/> 4L . 8L
+  </-chord2/> 4L . 8L
+  . 6L
+  </-chord3/> 4L . 8L
+  </-chord3/> 4L . 8L
+  . 6L
+  </-chord3/> 4L . 8L
+  </-chord3/> 4L . 8L
+  . 6L
+  
+  </ } />
+
+</ } />
+
+  
+piano:
+  
+  @intro: 
+
+  /* This is the second piano */
+
+  scaleup
+
+  </ for(let index=0; index < 2*8; index++) { />
+  	0 4L
+  	3 8L
+  	5 4L
+  	5 8L
+  	. 6L
+  </ } />
+

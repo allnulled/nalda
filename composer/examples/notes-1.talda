@@ -1,0 +1,4 @@
+piano:
+   voice 1:    0 2 3 5 7 8 10 12
+   voice 2: [[ a b c d e f g  >a ]]
+   voice 3:    0 . 3 . 7 . 10

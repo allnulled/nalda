@@ -1,0 +1,4 @@
+piano:
+V1: < (vol 100) (quant 100) a4(vol 100) (quant 100) a++4 < (vol 100) (quant 100) a4(vol 100) (quant 100) a++4 > (vol 100) (quant 100) a4(vol 100) (quant 100) a++4 > (vol 100) (quant 100) a4(vol 100) (quant 100) a++4
+
+

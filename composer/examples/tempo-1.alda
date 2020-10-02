@@ -1,0 +1,8 @@
+guitar:
+V1: < (vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(tempo 200) (vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(tempo 400) (vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(tempo 800) (vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4
+
+
+piano:
+V1: > (vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4(vol 100) (quant 100) a4
+
+
