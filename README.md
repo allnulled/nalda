@@ -461,6 +461,131 @@ But do not take this API too seriously, its purpose is more about suggesting, th
 
 The API is defined at `dev/nalda-api.js`.
 
+#### Predefined chords
+
+You may find very useful to use the `nalda.chord` API, which lets you write chords fastly.
+
+All the chords available right now are:
+
+```nalda
+nalda.chord.do
+nalda.chord.dom
+nalda.chord.do7
+nalda.chord.doSos
+nalda.chord.doSosm
+nalda.chord.doSos7
+nalda.chord.re
+nalda.chord.rem
+nalda.chord.re7
+nalda.chord.reSos
+nalda.chord.reSosm
+nalda.chord.reSos7
+nalda.chord.mi
+nalda.chord.mim
+nalda.chord.mi7
+nalda.chord.miSos
+nalda.chord.miSosm
+nalda.chord.miSos7
+nalda.chord.fa
+nalda.chord.fam
+nalda.chord.fa7
+nalda.chord.faSos
+nalda.chord.faSosm
+nalda.chord.faSos7
+nalda.chord.sol
+nalda.chord.solm
+nalda.chord.sol7
+nalda.chord.solSos
+nalda.chord.solSosm
+nalda.chord.solSos7
+nalda.chord.la
+nalda.chord.lam
+nalda.chord.la7
+nalda.chord.laSos
+nalda.chord.laSosm
+nalda.chord.laSos7
+nalda.chord.si
+nalda.chord.sim
+nalda.chord.si7
+```
+
+And their synonims, using the other popular notation:
+
+```nalda
+nalda.chord.C
+nalda.chord.Cm
+nalda.chord.C7
+nalda.chord.CSos
+nalda.chord.CSosm
+nalda.chord.CSos7
+nalda.chord.D
+nalda.chord.Dm
+nalda.chord.D7
+nalda.chord.DSos
+nalda.chord.DSosm
+nalda.chord.DSos7
+nalda.chord.E
+nalda.chord.Em
+nalda.chord.E7
+nalda.chord.ESos
+nalda.chord.ESosm
+nalda.chord.ESos7
+nalda.chord.F
+nalda.chord.Fm
+nalda.chord.F7
+nalda.chord.FSos
+nalda.chord.FSosm
+nalda.chord.FSos7
+nalda.chord.G
+nalda.chord.Gm
+nalda.chord.G7
+nalda.chord.GSos
+nalda.chord.GSosm
+nalda.chord.GSos7
+nalda.chord.A
+nalda.chord.Am
+nalda.chord.A7
+nalda.chord.ASos
+nalda.chord.ASosm
+nalda.chord.ASos7
+nalda.chord.B
+nalda.chord.Bm
+nalda.chord.B7
+```
+
+For example, a simple song could be written like this:
+
+```nalda
+/*********************************************
+ **** Con el diablo al lado - Zona Ganjah ****
+ *********************************************/
+
+</
+
+const { chord } = nalda;
+const reggaeRythm = function(chord1, chord2, chord3, chord4) {
+  return `
+  . 0.500s ${ chord1 } 0.001s . 0.100s ${ chord1 } 0.001s
+  . 0.500s ${ chord1 } 0.001s . 0.100s ${ chord1 } 0.001s
+  . 0.500s ${ chord2 } 0.001s . 0.100s ${ chord2 } 0.001s
+  . 0.500s ${ chord2 } 0.001s . 0.100s ${ chord2 } 0.001s
+  . 0.500s ${ chord3 } 0.001s . 0.100s ${ chord3 } 0.001s
+  . 0.500s ${ chord3 } 0.001s . 0.100s ${ chord3 } 0.001s
+  . 0.500s ${ chord4 } 0.001s . 0.100s ${ chord4 } 0.001s
+  . 0.500s ${ chord4 } 0.001s . 0.100s ${ chord4 } 0.001s`;
+};
+/>
+
+accordion:
+ voice 1:
+
+  tempo: 1800!
+  </-reggaeRythm(chord.Fm, chord.Fm, chord.ASosm, chord.Cm)/>
+  </-reggaeRythm(chord.Fm, chord.Fm, chord.ASosm, chord.Cm)/>
+```
+
+If you wrap the last template tags in a template loop, you can repeat that chords all the times you want, so you could have a nice base with very few lines.
+
 ## Examples of nalda scripts
 
 You can find the sample scripts found along this document on `composer/examples`.
