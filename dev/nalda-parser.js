@@ -485,7 +485,7 @@
         s2 = peg$parse_();
       }
       if (s1 !== peg$FAILED) {
-        s2 = peg$parsePalabra();
+        s2 = peg$parsePalabra_amplia();
         if (s2 !== peg$FAILED) {
           if (input.charCodeAt(peg$currPos) === 58) {
             s3 = peg$c2;

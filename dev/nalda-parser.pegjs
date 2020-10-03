@@ -191,7 +191,7 @@ Lenguaje = _* ast:Sentencia_completa* _* {
   return fromNaldaToAlda(ast)
 }
 Sentencia_completa = instrument:Instrumento _* voices:Voces {return {instrument, voices}}
-Instrumento = _* instrument:Palabra ":" {return instrument}
+Instrumento = _* instrument:Palabra_amplia ":" {return instrument}
 Voces = Voces_multiples / Voz_unica
 Voces_multiples = Voz_multiple+
 Voz_multiple = _* "voice " voice:Numero ":" _* contents:Contenido_musical {return {voice, contents}}
