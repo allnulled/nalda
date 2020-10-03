@@ -1,0 +1,47 @@
+/*******************************
+ **** Earth warrior - Omnia ****
+ *******************************/
+
+</
+
+const { chord } = nalda;
+const reggaeRythm = function(chord1, chord2, chord3, chord4) {
+  return `
+  . 0.250s ${ chord1 } . 0.050s .
+  . 0.250s ${ chord1 } . 0.050s .
+  . 0.250s ${ chord2 } . 0.050s .
+  . 0.250s ${ chord2 } . 0.050s .
+  . 0.250s ${ chord3 } . 0.050s .
+  . 0.250s ${ chord3 } . 0.050s .
+  . 0.250s ${ chord4 } . 0.050s .
+  . 0.250s ${ chord4 } . 0.050s .`;
+};
+const reggaeCounterRythm = function(chord1, chord2, chord3, chord4) {
+  return `
+  ${ chord4 } . 0.250s . 0.050s .
+  ${ chord1 } . 0.250s . 0.050s .
+  ${ chord1 } . 0.250s . 0.050s .
+  ${ chord2 } . 0.250s . 0.050s .
+  ${ chord2 } . 0.250s . 0.050s .
+  ${ chord3 } . 0.250s . 0.050s .
+  ${ chord3 } . 0.250s . 0.050s .
+  ${ chord4 } . 0.250s . 0.050s .`;
+};
+/>
+
+steel-drums:
+ voice 1:
+  tempo: 500!
+  </-reggaeRythm(chord.Dm, chord.Dm, chord.ASos, chord.C)/>
+  </-reggaeRythm(chord.Dm, chord.Dm, chord.ASos, chord.C)/>
+  @go!
+  </-reggaeRythm(chord.Dm, chord.Dm, chord.ASos, chord.C)/>
+  </-reggaeRythm(chord.Dm, chord.Dm, chord.ASos, chord.C)/>
+  . 0.250s </-chord.Dm /> . 0.050s .
+
+piano:
+ voice 1:
+ @go:
+  </-reggaeCounterRythm(chord.Dm, chord.Dm, chord.ASos, chord.C)/>
+  </-reggaeCounterRythm(chord.Dm, chord.Dm, chord.ASos, chord.C)/>
+  </-chord.C /> . 0.250s . 0.050s .

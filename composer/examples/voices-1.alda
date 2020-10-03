@@ -1,6 +1,0 @@
-piano:
-V1:(vol 100) (quant 100) a4
-V2: > (vol 100) (quant 100) a4
-V3: > (vol 100) (quant 100) a4
-
-

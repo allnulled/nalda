@@ -8,6 +8,7 @@
     "lint": "node linter.js",
     "build": "node dev/build.js",
     "watch": "node watcher.js",
+    "clean": "rm composer/*.calda composer/*.talda composer/*.alda",
     "start": "npm run up && npm run watch"
   },
   "keywords": ["alda", "music"],

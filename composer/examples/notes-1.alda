@@ -1,6 +1,0 @@
-piano:
-V1:(vol 100) (quant 100) a4(vol 100) (quant 100) a++4(vol 100) (quant 100) a+++4(vol 100) (quant 100) a+++++4(vol 100) (quant 100) a+++++++4(vol 100) (quant 100) a++++++++4(vol 100) (quant 100) a++++++++++4(vol 100) (quant 100) a++++++++++++4
-V2:  a b c d e f g  >a  
-V3:(vol 100) (quant 100) a4(vol 100) (quant 100) r4(vol 100) (quant 100) a+++4(vol 100) (quant 100) r4(vol 100) (quant 100) a+++++++4(vol 100) (quant 100) r4(vol 100) (quant 100) a++++++++++4
-
-
